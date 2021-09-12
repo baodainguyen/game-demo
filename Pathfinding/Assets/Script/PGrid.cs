@@ -42,7 +42,7 @@ public class PGrid : MonoBehaviour
         for(int x = 0; x < gridSizeX; x++){
             for(int y = 0; y < gridSizeY; y++){
                 Vector3 worldPoint = GetWorlPoint(x, y);
-                bool walkable = !(Physics.CheckSphere(worldPoint,nodeRadius,unwalkableMask));
+                bool walkable = !(Physics.CheckSphere(worldPoint, nodeRadius, unwalkableMask));
                 
                 byte movementPenalty = 0;
                 // raycast
@@ -68,13 +68,16 @@ public class PGrid : MonoBehaviour
         Node targetNode = NodeFromWorldPoint(target);
         var arrounds = GetArroundsAvailable(targetNode);
         
-        return arrounds.Find(delegate(Node n)
-            { return n.gridX != exceptN.gridX && n.gridY != exceptN.gridY && n.movementPenalty < 5; }
-        );        
+        Node newNode = arrounds.Find(n => !n.Is(exceptN) && n.movementPenalty < 3 );
+        
+        if(newNode == null)
+            newNode = arrounds.Find(delegate(Node n) { return !n.Is(exceptN); });
+        
+        return newNode;
     }
     List<Node> GetArroundsAvailable(Node target) {
         var neighbours = GetNeighbours(target).FindAll(n => n.walkable && !PathRequestManager.instance.IsUsed(n));
-        neighbours.Sort((a, b) => b.fCost - a.fCost);
+        neighbours.Sort((a, b) => b.gCost - a.gCost );
         return neighbours;
     }
     
@@ -126,6 +129,8 @@ public class PGrid : MonoBehaviour
         {    
             foreach (Node n in grid) {
                 Gizmos.color = (n.walkable) ? Color.white : Color.red;
+                if(n.movementPenalty > 0)
+                    Gizmos.color = Color.cyan;
                 Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter-.1f));
             }
         }

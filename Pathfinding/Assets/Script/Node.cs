@@ -33,6 +33,7 @@ public class Node : IHeapItem<Node>
     public bool Is(Node n){
         return n.gridX == gridX && n.gridY == gridY;
     }
+    
     public int CompareTo(Node nodeToCompare)
     {
         int compare = fCost.CompareTo(nodeToCompare.fCost);

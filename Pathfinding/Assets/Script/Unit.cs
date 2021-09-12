@@ -5,14 +5,14 @@ using UnityEngine;
 public class Unit : MonoBehaviour
 {
     const float pathUpdateModeThreshol = .5f;
-    const float minPathUpdateTime = .2f;
+    const float minPathUpdateTime = .27f;
     public Transform target;
 
     [Range(3f, 30f)]
     public float speed = 3;
     public float turnSpeed = 9;
     public float turnDst = 1;
-    Path path;
+    LinearPath path;
 
     void Start(){
         StartCoroutine(UpdatePath());
@@ -24,7 +24,7 @@ public class Unit : MonoBehaviour
         {
             PathNode verifyPath = PathRequestManager.instance.GetLastAvailable(pathNodes, target.position);
 
-            path = new Path(verifyPath.waypoints, transform.position, turnDst);
+            path = new LinearPath(verifyPath.waypoints, transform.position, turnDst);
             
             PathRequestManager.instance.AddNodeUsed(verifyPath.lastNode);
             StopCoroutine(nameof(FollowPath));
@@ -33,8 +33,8 @@ public class Unit : MonoBehaviour
     }
      
     IEnumerator UpdatePath() {
-        if(Time.timeSinceLevelLoad < .3f){
-            yield return new WaitForSeconds(.3f);
+        if(Time.timeSinceLevelLoad < .63f){
+            yield return new WaitForSeconds(.63f);
         }
         
         PathRequestManager.RequestPath(new PathRequest(transform.position, target.position, OnPathFound));
@@ -83,7 +83,6 @@ public class Unit : MonoBehaviour
     
 #if UNITY_EDITOR
     
-    public bool displayGridGizmos;
     void OnDrawGizmos(){
         if(path != null) {
             path.DrawWithGizmos();

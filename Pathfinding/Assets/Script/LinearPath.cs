@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 // Smooth line path
-public class Path 
+public class LinearPath 
 {
     public readonly Vector3[] lookPoints;
     public readonly Line[] turnBoundaries;
     public readonly int finishLineIndex;
 
-    public Path(Vector3[] waypoints, Vector3 startPos, float turnDst)
+    public LinearPath(Vector3[] waypoints, Vector3 startPos, float turnDst)
     {
         lookPoints = waypoints;
         turnBoundaries = new Line[lookPoints.Length];

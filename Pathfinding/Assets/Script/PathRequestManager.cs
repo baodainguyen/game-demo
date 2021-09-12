@@ -36,9 +36,10 @@ public class PathRequestManager : MonoBehaviour
         Node lastNode = path.lastNode;
         if(IsUsed(lastNode)) {
             Node newNode = pathfinding.GetArroundAvailable(targetPos, lastNode);
-            Vector3 newPos = newNode.worldPosition;
-            path.UpdateLastPoint(newPos);
-            path.lastNode = newNode;
+            if(newNode != null) {
+                Vector3 newPos = newNode.worldPosition;
+                path.UpdateLastPoint(newPos, newNode);
+            }
         }
         return path;
     }
@@ -108,9 +109,10 @@ public struct PathNode
     public PathNode (Vector3[] path, Node node) {
         waypoints = path; lastNode = node;
     }
-    public void UpdateLastPoint(Vector3 point){
+    public void UpdateLastPoint(Vector3 point, Node node){
         if(waypoints.Length > 0) {
             waypoints[waypoints.Length -1] = point;
+            lastNode = node;
         }
     }
 }

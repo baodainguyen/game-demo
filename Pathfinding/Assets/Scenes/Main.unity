@@ -138,7 +138,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!64 &32613491
 MeshCollider:
@@ -232,7 +232,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!65 &131830433
 BoxCollider:
@@ -325,7 +325,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &186556988
 Transform:
@@ -514,7 +514,6 @@ MonoBehaviour:
   speed: 9.6
   turnSpeed: 9
   turnDst: 1
-  displayGridGizmos: 0
 --- !u!136 &652413743
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -732,7 +731,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!65 &745301101
 BoxCollider:
@@ -904,7 +903,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &772475756
 Transform:
@@ -997,7 +996,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!65 &893774222
 BoxCollider:
@@ -1190,7 +1189,6 @@ MonoBehaviour:
   speed: 9.6
   turnSpeed: 9
   turnDst: 1
-  displayGridGizmos: 0
 --- !u!136 &1061925571
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1271,7 +1269,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e701021bb71f99c44b70ad5faa87a373, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1308,7 +1306,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1083127668}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 38.6, y: 0.52, z: 40.8}
+  m_LocalPosition: {x: 36.53, y: 0.52, z: 39.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1331,7 +1329,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!65 &1314049506
 BoxCollider:
@@ -1503,7 +1501,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!65 &1523290409
 BoxCollider:
@@ -1613,7 +1611,6 @@ MonoBehaviour:
   speed: 9.6
   turnSpeed: 9
   turnDst: 1
-  displayGridGizmos: 0
 --- !u!136 &1593118138
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1657,7 +1654,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1648351469
 Transform:
@@ -1714,7 +1711,6 @@ MonoBehaviour:
   speed: 9.6
   turnSpeed: 9
   turnDst: 1
-  displayGridGizmos: 0
 --- !u!136 &1654546081
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1885,6 +1881,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 318295023314598081, guid: ccdad004fd4c46448989e03c3b7529c1,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ccdad004fd4c46448989e03c3b7529c1,
         type: 3}
       propertyPath: m_Name
@@ -1894,6 +1895,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccdad004fd4c46448989e03c3b7529c1,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccdad004fd4c46448989e03c3b7529c1, type: 3}
@@ -1934,7 +1940,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1880544882
 Transform:
@@ -1979,7 +1985,7 @@ MonoBehaviour:
   walkableMask:
     serializedVersion: 2
     m_Bits: 0
-  displayGridGizmos: 0
+  displayGridGizmos: 1
 --- !u!114 &1880544884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2039,7 +2045,6 @@ MonoBehaviour:
   speed: 9.6
   turnSpeed: 9
   turnDst: 1
-  displayGridGizmos: 0
 --- !u!136 &2115568105
 CapsuleCollider:
   m_ObjectHideFlags: 0
