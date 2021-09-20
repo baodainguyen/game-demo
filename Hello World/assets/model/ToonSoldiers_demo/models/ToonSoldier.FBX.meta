@@ -5,23 +5,6 @@
   "uuid": "5ba7954c-1cd1-445f-a2e1-fa5a55e82bc5",
   "files": [],
   "subMetas": {
-    "33728": {
-      "importer": "gltf-embeded-image",
-      "uuid": "5ba7954c-1cd1-445f-a2e1-fa5a55e82bc5@33728",
-      "displayName": "",
-      "id": "33728",
-      "name": "Map #16.image",
-      "userData": {
-        "gltfIndex": 0
-      },
-      "ver": "1.0.3",
-      "imported": true,
-      "files": [
-        ".png",
-        ".json"
-      ],
-      "subMetas": {}
-    },
     "c7a7e": {
       "importer": "gltf-mesh",
       "uuid": "5ba7954c-1cd1-445f-a2e1-fa5a55e82bc5@c7a7e",
@@ -69,8 +52,8 @@
         "magfilter": "linear",
         "mipfilter": "none",
         "anisotropy": 0,
-        "isUuid": true,
-        "imageUuidOrDatabaseUri": "5ba7954c-1cd1-445f-a2e1-fa5a55e82bc5@33728"
+        "isUuid": false,
+        "imageUuidOrDatabaseUri": "db://assets/model/ToonSoldiers_demo/models/basic_soldier_blue.png"
       },
       "ver": "1.0.21",
       "imported": true,
@@ -116,7 +99,7 @@
     "imageMetas": [
       {
         "name": "Map #16",
-        "uri": "5ba7954c-1cd1-445f-a2e1-fa5a55e82bc5@33728"
+        "uri": "db://assets/model/ToonSoldiers_demo/models/basic_soldier_blue.png"
       }
     ],
     "legacyFbxImporter": false,
