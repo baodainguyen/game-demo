@@ -1,24 +1,24 @@
-*/.vscode
-*/obj/*
-*/.vs/*
 
-Hello World/library/
-Hello World/temp/
-Hello World/local/
-Hello World/build/
-Hello World/profiles/
+#///////////////////////////
+# Cocos Creator 3D Project
+#///////////////////////////
+library/
+temp/
+local/
+build/
+profiles/
 native
 #//////////////////////////
 # NPM
 #//////////////////////////
-Hello World/node_modules/
+node_modules/
 
 #//////////////////////////
 # VSCode
 #//////////////////////////
-Hello World/.vscode/
+.vscode/
 
 #//////////////////////////
 # WebStorm
 #//////////////////////////
-Hello World/.idea/
+.idea/

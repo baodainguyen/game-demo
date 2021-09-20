@@ -1,0 +1,39 @@
+{
+  "__version__": "1.0.1",
+  "script": {
+    "useDefineForClassFields": false,
+    "allowDeclareFields": false
+  },
+  "layer": [
+    {
+      "name": "Ground",
+      "value": 1
+    },
+    {
+      "name": "Player",
+      "value": 2
+    }
+  ],
+  "physics": {
+    "collisionGroups": [
+      {
+        "index": 1,
+        "name": "Ground"
+      },
+      {
+        "index": 2,
+        "name": "Player"
+      },
+      {
+        "index": 3,
+        "name": "Obstacle"
+      }
+    ],
+    "collisionMatrix": {
+      "0": 1,
+      "1": 4,
+      "2": 10,
+      "3": 4
+    }
+  }
+}

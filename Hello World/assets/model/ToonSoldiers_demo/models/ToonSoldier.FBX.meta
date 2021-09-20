@@ -1,0 +1,142 @@
+{
+  "ver": "2.1.4",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "5ba7954c-1cd1-445f-a2e1-fa5a55e82bc5",
+  "files": [],
+  "subMetas": {
+    "33728": {
+      "importer": "gltf-embeded-image",
+      "uuid": "5ba7954c-1cd1-445f-a2e1-fa5a55e82bc5@33728",
+      "displayName": "",
+      "id": "33728",
+      "name": "Map #16.image",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.3",
+      "imported": true,
+      "files": [
+        ".png",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "c7a7e": {
+      "importer": "gltf-mesh",
+      "uuid": "5ba7954c-1cd1-445f-a2e1-fa5a55e82bc5@c7a7e",
+      "displayName": "",
+      "id": "c7a7e",
+      "name": "MESH_Infantry.mesh",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.1.0",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "438fe": {
+      "importer": "gltf-skeleton",
+      "uuid": "5ba7954c-1cd1-445f-a2e1-fa5a55e82bc5@438fe",
+      "displayName": "",
+      "id": "438fe",
+      "name": "UnnamedSkeleton.skeleton",
+      "userData": {
+        "gltfIndex": 0,
+        "jointsLength": 20
+      },
+      "ver": "1.0.1",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "d0482": {
+      "importer": "texture",
+      "uuid": "5ba7954c-1cd1-445f-a2e1-fa5a55e82bc5@d0482",
+      "displayName": "",
+      "id": "d0482",
+      "name": "Map #16.texture",
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "anisotropy": 0,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "5ba7954c-1cd1-445f-a2e1-fa5a55e82bc5@33728"
+      },
+      "ver": "1.0.21",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "883e3": {
+      "importer": "gltf-material",
+      "uuid": "5ba7954c-1cd1-445f-a2e1-fa5a55e82bc5@883e3",
+      "displayName": "",
+      "id": "883e3",
+      "name": "14 - Default.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "dd0b3": {
+      "importer": "gltf-scene",
+      "uuid": "5ba7954c-1cd1-445f-a2e1-fa5a55e82bc5@dd0b3",
+      "displayName": "",
+      "id": "dd0b3",
+      "name": "ToonSoldier.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.12",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [
+      {
+        "name": "Map #16",
+        "uri": "5ba7954c-1cd1-445f-a2e1-fa5a55e82bc5@33728"
+      }
+    ],
+    "legacyFbxImporter": false,
+    "redirect": "5ba7954c-1cd1-445f-a2e1-fa5a55e82bc5@dd0b3",
+    "assetFinder": {
+      "meshes": [
+        "5ba7954c-1cd1-445f-a2e1-fa5a55e82bc5@c7a7e"
+      ],
+      "skeletons": [
+        "5ba7954c-1cd1-445f-a2e1-fa5a55e82bc5@438fe"
+      ],
+      "textures": [
+        "5ba7954c-1cd1-445f-a2e1-fa5a55e82bc5@d0482"
+      ],
+      "materials": [
+        "5ba7954c-1cd1-445f-a2e1-fa5a55e82bc5@883e3"
+      ],
+      "scenes": [
+        "5ba7954c-1cd1-445f-a2e1-fa5a55e82bc5@dd0b3"
+      ]
+    }
+  }
+}
