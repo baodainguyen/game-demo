@@ -9,8 +9,7 @@ export class Bullet extends Component {
     dir:Vec3 = Vec3.ZERO;
     setDir(_dir:Vec3) {
         this.dir = _dir;
-        this.dir.normalize();
-        Vec3.multiplyScalar(this.dir, this.dir, 3);
+        this.dir.normalize();        
     }
 
     start () {
@@ -25,8 +24,11 @@ export class Bullet extends Component {
     }
 
     update(dt:number){
-        this.rigid.setLinearVelocity(this.dir);
-        console.log('bullet')
+        // this.rigid.setLinearVelocity(this.dir);
+        // console.log('bullet')
+
+        Vec3.multiplyScalar(this.dir, this.dir, 0.2);
+        this.node.setWorldPosition(this.dir);
     }
 }
 
