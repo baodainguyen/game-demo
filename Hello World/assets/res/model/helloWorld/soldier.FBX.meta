@@ -199,7 +199,7 @@
         "premultiplyAlpha": false,
         "anisotropy": 0,
         "isUuid": false,
-        "imageUuidOrDatabaseUri": "db://assets/model/helloWorld/soldier.png"
+        "imageUuidOrDatabaseUri": "db://assets/res/model/helloWorld/soldier.png"
       },
       "ver": "1.0.21",
       "imported": true,
@@ -253,7 +253,7 @@
     "imageMetas": [
       {
         "name": "soldier",
-        "uri": "db://assets/model/helloWorld/soldier.png"
+        "uri": "db://assets/res/model/helloWorld/soldier.png"
       },
       {
         "name": "shield.jpg",

@@ -27,13 +27,23 @@
       {
         "index": 3,
         "name": "Obstacle"
+      },
+      {
+        "index": 4,
+        "name": "BulletPlayer"
+      },
+      {
+        "index": 5,
+        "name": "Enemy"
       }
     ],
     "collisionMatrix": {
       "0": 1,
       "1": 4,
       "2": 10,
-      "3": 4
+      "3": 4,
+      "4": 32,
+      "5": 16
     }
   }
 }
