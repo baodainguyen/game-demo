@@ -13,6 +13,8 @@ export class MoveControl extends Component {
     rotateSpeed = 0.5;
 
     rigid:RigidBody = null!;
+    posTarget:Vec3 = Vec3.ZERO;
+    get Target():Vec3{ return this.posTarget; }
     
     start () {
         if(this.rigid == null) this.rigid = this.getComponent(RigidBody) as RigidBody;
@@ -43,18 +45,16 @@ export class MoveControl extends Component {
 
         pos = this.getLimitPos(pos);
         
-        let posTarget: Vec3;
         if(y) {
-            posTarget = new Vec3 (x,y,-z);
+            this.posTarget = new Vec3 (x,y,-z);
         } else {
-            posTarget = new Vec3 (x, pos.y, -z);
+            this.posTarget = new Vec3 (x, pos.y, -z);
         }
 
-
         let offset = new Vec3();
-        Vec3.subtract(offset, posTarget, this.node.worldPosition);
+        Vec3.subtract(offset, this.posTarget, this.node.worldPosition);
 
-        this.node.lookAt(posTarget.multiplyScalar(-1));
+        this.node.lookAt(this.posTarget.multiplyScalar(-1));
 
         offset.normalize();
 

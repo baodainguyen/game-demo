@@ -26,9 +26,20 @@ export class Bullet extends Component {
     update(dt:number){
         // this.rigid.setLinearVelocity(this.dir);
         // console.log('bullet')
+      //  let pos = this.node.getWorldPosition();
+    //   let d = this.dir;
+    //     Vec3.multiplyScalar(d, this.dir, 0.2);
+    //     this.node.setWorldPosition(this.dir);
 
-        Vec3.multiplyScalar(this.dir, this.dir, 0.2);
-        this.node.setWorldPosition(this.dir);
+        let offset = new Vec3();
+        Vec3.subtract(offset, this.dir, this.node.worldPosition);
+
+        offset.normalize();
+
+        Vec3.multiplyScalar(offset, offset, 6);
+
+       // Vec3.add(offset, offset, pos);    // harcode movement
+        this.node.setWorldPosition(offset);
     }
 }
 
