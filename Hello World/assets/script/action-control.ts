@@ -26,8 +26,10 @@ export class ActionControl extends Component {
     }
     fire(event:Event, customEventData:any){
         //Global.prefab.newBullet(this.bulletSpawn.getWorldPosition(), this.target.getWorldPosition());
-        Utils.rayTo(this.bulletSpawn.getWorldPosition(), this.target.getWorldPosition(), EIgnoreLayer.Ground).then((node:any) => {
+        Utils.rayClosest(this.bulletSpawn.getWorldPosition(), this.target.getWorldPosition(), EIgnoreLayer.Ground).then((node:any) => {
             console.log(node.name, node.getPosition());
+            let target = node.getWorldPosition();
+            Utils.drawLine(this.bulletSpawn, target);
         });
     }
 

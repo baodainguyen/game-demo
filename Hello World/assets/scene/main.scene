@@ -769,7 +769,9 @@
     },
     "_enabled": true,
     "__prefab": null,
-    "bulletSpawn": null,
+    "bulletSpawn": {
+      "__id__": 31
+    },
     "target": {
       "__id__": 32
     },
@@ -4406,7 +4408,7 @@
     "_enabled": true,
     "__prefab": null,
     "bullet": {
-      "__uuid__": "db0a48e0-24af-4f48-b490-ce6d2b39fa26",
+      "__uuid__": "f64b6551-9ede-40a5-b41d-f3d3884af22f",
       "__expectedType__": "cc.Prefab"
     },
     "_id": "f2+jFmdilIDoZTABe57fb1"
