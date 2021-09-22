@@ -1,5 +1,5 @@
 
-import { _decorator, Component, Node, EventTouch, Touch, Vec3 } from 'cc';
+import { _decorator, Component, Node, EventTouch, Touch, systemEvent, SystemEvent,macro } from 'cc';
 import { Global } from './global';
 const { ccclass, property } = _decorator;
 
@@ -25,6 +25,27 @@ export class InputControl extends Component {
         Global.inputControl = this;
     }
 
+    onLoad () {
+        // add key down and key up event
+        systemEvent.on(SystemEvent.EventType.KEY_UP, this.onKeyUp, this);
+        systemEvent.on(SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
+    }
+
+    IsFire = false;
+    onKeyUp(e:any){
+        switch(e.keyCode) {
+            case macro.KEY.space:
+                this.IsFire = false;
+                break;
+        }
+    }
+    onKeyDown(e:any){
+        switch(e.keyCode) {
+            case macro.KEY.space:
+                this.IsFire = true;
+                break;
+        }
+    }
 
     start () {
         this.canvas.on(Node.EventType.TOUCH_START, this.onTouchStart, this);
