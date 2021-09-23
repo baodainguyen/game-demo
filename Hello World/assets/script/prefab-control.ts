@@ -8,7 +8,7 @@ const { ccclass, property } = _decorator;
 export class PrefabControl extends Component {
     
     @property(Prefab)
-    splash = null!;
+    shellTrail = null!;
 
     __preload () {
         Global.prefab = this;

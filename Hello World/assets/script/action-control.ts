@@ -6,6 +6,7 @@ const { ccclass, property } = _decorator;
  
 @ccclass('ActionControl')
 export class ActionControl extends Component {
+    
     @property(Node)
     line:Node = null!;
 
@@ -13,6 +14,10 @@ export class ActionControl extends Component {
     target:Node = null!;
 
     moveControl:MoveControl = null!;
+
+    onEnable() {
+        
+    }
 
     start () {
         this.moveControl = this.getComponent(MoveControl) as MoveControl;
@@ -30,12 +35,14 @@ export class ActionControl extends Component {
 
         Utils.rayClosest(from, to, EIgnoreLayer.Ground).then((node:any) => {
             console.log(node.name, node.getPosition());
+
             this.line.setScale(new Vec3(1, 1, Utils.MaxDistance));
 
             let self = this;
             this.scheduleOnce(function() {
                 self.line.setScale(Vec3.ZERO);
             }, 0.09);
+
         });
     }
     fire(event:Event, customEventData:any){

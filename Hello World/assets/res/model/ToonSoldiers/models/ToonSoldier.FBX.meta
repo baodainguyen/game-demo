@@ -53,7 +53,7 @@
         "mipfilter": "none",
         "anisotropy": 0,
         "isUuid": false,
-        "imageUuidOrDatabaseUri": "db://assets/res/model/ToonSoldiers_demo/models/basic_soldier_blue.png"
+        "imageUuidOrDatabaseUri": "db://assets/res/model/ToonSoldiers/models/basic_soldier_blue.png"
       },
       "ver": "1.0.21",
       "imported": true,
@@ -99,7 +99,7 @@
     "imageMetas": [
       {
         "name": "Map #16",
-        "uri": "db://assets/res/model/ToonSoldiers_demo/models/basic_soldier_blue.png"
+        "uri": "db://assets/res/model/ToonSoldiers/models/basic_soldier_blue.png"
       }
     ],
     "legacyFbxImporter": false,
