@@ -23,18 +23,27 @@ export class Camera extends Component {
     onKeyDown(event:any){
         switch(event.keyCode) {
             case macro.KEY.z:
-               this.shakeSmall();
+                this.shakeLight();
                 break;
             case macro.KEY.x:
+               this.shakeSmall();
+                break;
+            case macro.KEY.c:
                 this.shakeLarge();
                 break;
         }
     }
 
+    public shakeLight(){
+        this.duration = 0.36;
+        this.magnitude = 0.09;
+        this.shake(0.016685);
+    }
+
     public shakeSmall(){
         this.duration = 0.6;
         this.magnitude = 0.12;
-        this.shake(0.016684999999999946);
+        this.shake(0.01668499999999995);
     }
     public shakeLarge(){
         this.duration = 1.16;
