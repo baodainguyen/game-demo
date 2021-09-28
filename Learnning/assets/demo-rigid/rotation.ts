@@ -1,12 +1,10 @@
 
 import { _decorator, Component, systemEvent, SystemEvent, macro, Quat, Vec3, Node } from 'cc';
-import {Global, Utils} from '../demo/global'
+import { Global, Utils } from '../script/global';
 const { ccclass, property } = _decorator;
 
 @ccclass('Rotation')
 export class Rotation extends Component {
-    @property(Node)
-    aaa = null!;
 
     private rad = 0;
     
@@ -24,7 +22,6 @@ export class Rotation extends Component {
                 this.node.setRotationFromEuler(0, this.Angle, 0);
 
                 console.log(this.VecForward);
-                console.log(this.aaa.getWorldPosition());
                 break;
         }
     }

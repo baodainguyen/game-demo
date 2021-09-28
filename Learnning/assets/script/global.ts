@@ -1,7 +1,5 @@
-
 import { _decorator, Node, Vec3, game } from 'cc';
 const { ccclass, property } = _decorator;
-
 
 export class Global {
     static PI = 3.14159265359;
