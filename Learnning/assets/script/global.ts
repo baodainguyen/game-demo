@@ -1,11 +1,11 @@
 
-import { _decorator, Node, Vec3, Quat } from 'cc';
+import { _decorator, Node, Vec3, game } from 'cc';
 const { ccclass, property } = _decorator;
 
 
 export class Global {
     static PI = 3.14159265359;
-
+    static SceneNames: string[] = [];
     
 }
 
@@ -43,5 +43,21 @@ export class Utils {
         return a;
     }
 
-    
+    static getScenes(){
+        const sceneInfo = game._sceneInfos;
+        const array: string[] = sceneInfo.map((i:any) => i.url).sort();
+        console.log(sceneInfo);
+        console.log(array);
+        for (let i = 0; i < array.length; i++) {
+            let str = array[i];
+            if (str.includes("TestList") || str.includes("subPack") || str.includes('editor-only') || str.includes('experiment')) {
+                continue;
+            }
+            const firstIndex = str.lastIndexOf('/') + 1;
+            const lastIndex = str.lastIndexOf('.scene');
+            Global.SceneNames.push(str.substring(firstIndex, lastIndex));
+        }
+
+        console.log(Global.SceneNames);
+    }
 }

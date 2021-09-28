@@ -1,4 +1,5 @@
 import { _decorator, Component, Node, Vec3, Quat, systemEvent, SystemEvent, macro, clamp, Vec2, RigidBody } from 'cc';
+import { Utils } from '../script/global';
 const { ccclass, property, requireComponent } = _decorator;
 
 @ccclass('Player')
@@ -19,6 +20,10 @@ export class Player extends Component {
 
     private verticalState:number = 0;  // 1 || -1
     private horizontalState:number = 0; // 1 || -1
+
+    __preload() {
+        Utils.getScenes();
+    }
 
     onLoad () {
         systemEvent.on(SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
