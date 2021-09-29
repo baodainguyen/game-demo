@@ -1,12 +1,12 @@
 
-import { _decorator, Component, Node, EventTouch, Touch, systemEvent, SystemEvent,macro } from 'cc';
+import { _decorator, Component, Node, EventTouch, Touch, systemEvent, SystemEvent,macro, Prefab } from 'cc';
 import { Global } from './global';
 const { ccclass, property } = _decorator;
 
  
 @ccclass('InputControl')
 export class InputControl extends Component {
-
+    
     @property(Node)
     canvas: Node = null!;
 

@@ -12,7 +12,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "trail01",
+    "_name": "trail",
     "_objFlags": 0,
     "_parent": null,
     "_children": [],

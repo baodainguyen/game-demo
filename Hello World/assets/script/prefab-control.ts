@@ -1,6 +1,6 @@
 
 import { _decorator, Component, Node, Prefab, instantiate, Vec3 } from 'cc';
-import { Global } from './global';
+import { Global, Utils } from './global';
 //import { Bullet } from './bullet';
 const { ccclass, property } = _decorator;
 
