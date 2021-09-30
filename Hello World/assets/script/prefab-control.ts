@@ -1,20 +1,30 @@
 
-import { _decorator, Component, Node, Prefab, instantiate, Vec3 } from 'cc';
+import { _decorator, Component, Node, Prefab, instantiate } from 'cc';
 import { Global, Utils } from './global';
-//import { Bullet } from './bullet';
+import { InteractObject } from './interact-object';
 const { ccclass, property } = _decorator;
 
 @ccclass('PrefabControl')
 export class PrefabControl extends Component {
     
     @property(Prefab)
-    shellTrail = null!;
+    healthBar = null!;
 
     __preload () {
         Global.prefab = this;
     }
 
-    // update (deltaTime: number) {
-    //     // [4]
-    // }
+    showHealthUI(node:Node){
+        let t:InteractObject = node.getComponent(InteractObject) as InteractObject;
+        if(t && t.IsDead) return;
+        if(t && t.HasBar) {
+            t.hitShell();
+            return;
+        }
+        let h = instantiate(this.healthBar) as Node;
+        h.setParent(node);
+        
+        !!t && t.assignBar(h);
+    }
+   
 }

@@ -29,8 +29,6 @@ export class Utils {
                     const item = r[i];
                     resolve(item.collider.node);
                     
-                   // const modelCom = item.collider.node.getComponent(ModelComponent)!;
-                   // modelCom.material = this.rayMaterial;
                 }
             }
         }); // promise
@@ -49,8 +47,6 @@ export class Utils {
                 const r = PhysicsSystem.instance.raycastClosestResult;
                 resolve(r.collider.node);
                // console.log(r.collider.node.name, r.collider.node.getPosition());
-                //const modelCom = r.collider.node.getComponent(ModelComponent)!;
-                //modelCom.material = this.rayMaterial;
             }
         }); // promise
     };
