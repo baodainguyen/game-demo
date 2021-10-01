@@ -17,14 +17,14 @@ export class InteractObject extends Component {
         }
 
         let n = Math.random();
-        n += 1;
+        n += 1;     // hardcode
         this.health -= n;
         if(this.health < 0) {
             this.isDead = true;
             this.timeCount = 0;
-            
             this.deadAnimation();
         }
+        this.scaleHealthBar();
     }
 
     private deadAnimation() {
@@ -35,17 +35,18 @@ export class InteractObject extends Component {
         this.healthBar && this.healthBar.node.destroy();
         this.healthBar = undefined;
     }
-    
+    private scaleHealthBar() {
+        let p = this.health / 100;
+        this.healthBar && this.healthBar.scale(p);
+    }
     public assignBar(n:Node) {
         if(!this.HasBar) {
             this.healthBar = n.getComponent(HealthBar) as HealthBar;
             this.hitShell();
 
             this.timeCount = 0;
-        };
-        
-        let p = this.health / 100;
-        this.healthBar && this.healthBar.scale(p);
+        };        
+       this.scaleHealthBar();
     }
     public get HasBar():boolean {
         return !!this.healthBar;

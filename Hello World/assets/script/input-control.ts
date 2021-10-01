@@ -1,8 +1,7 @@
 
-import { _decorator, Component, Node, EventTouch, Touch, systemEvent, SystemEvent,macro, Prefab } from 'cc';
+import { _decorator, Component, Node, EventTouch, Touch, systemEvent, SystemEvent, EventKeyboard, KeyCode } from 'cc';
 import { Global } from './global';
 const { ccclass, property } = _decorator;
-
  
 @ccclass('InputControl')
 export class InputControl extends Component {
@@ -11,10 +10,8 @@ export class InputControl extends Component {
     canvas: Node = null!;
 
     isTouch = false;
-    touchPosX = 0;
-    touchPosZ = 0;
-    movePosX = 0;
-    movePosZ = 0;
+    touchPosX = 0; touchPosZ = 0;
+    movePosX = 0;  movePosZ = 0;
     get MovePos(){
         return {
             x: this.movePosX, z: this.movePosZ
@@ -25,23 +22,17 @@ export class InputControl extends Component {
         Global.inputControl = this;
     }
 
-    onLoad () {
-        // add key down and key up event
-        systemEvent.on(SystemEvent.EventType.KEY_UP, this.onKeyUp, this);
-        systemEvent.on(SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
-    }
-
     IsFire = false;
-    onKeyUp(e:any){
+    onKeyUp(e:EventKeyboard){
         switch(e.keyCode) {
-            case macro.KEY.space:
+            case KeyCode.SPACE:
                 this.IsFire = false;
                 break;
         }
     }
-    onKeyDown(e:any){
+    onKeyDown(e:EventKeyboard){
         switch(e.keyCode) {
-            case macro.KEY.space:
+            case KeyCode.SPACE:
                 this.IsFire = true;
                 break;
         }
@@ -51,6 +42,10 @@ export class InputControl extends Component {
         this.canvas.on(Node.EventType.TOUCH_START, this.onTouchStart, this);
         this.canvas.on(Node.EventType.TOUCH_END, this.onTouchEnd, this);
         this.canvas.on(Node.EventType.TOUCH_MOVE, this.onTouchMove, this);
+
+        // add key down and key up event
+        systemEvent.on(SystemEvent.EventType.KEY_UP, this.onKeyUp, this);
+        systemEvent.on(SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
     }
 
     

@@ -28,13 +28,11 @@ export class ActionControl extends Component {
     resetScale(){
         this.line.setScale(Vec3.ZERO);
     }
-    update (deltaTime: number) {
-        if(Global.inputControl.IsFire) {
-            this.onFire();
-        }
+    update (dt: number) {
+        Global.inputControl.IsFire && this.onFire();
     }
     
-    onFire(){
+    onFire() {
         let from = this.line.getWorldPosition();
         let to = this.target.getWorldPosition();
 
@@ -55,7 +53,7 @@ export class ActionControl extends Component {
             this.scheduleOnce(this.resetScale, 0.045);
         });
     }
-    fire(event:Event, customEventData:any){
+    fire(event:Event, customEventData:any){     // button Fire on CanvasUI
         this.onFire();
     }
     
