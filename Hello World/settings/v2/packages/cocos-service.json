@@ -1,13 +1,17 @@
 {
   "game": {
-    "name": "UNKNOW GAME",
-    "app_id": "UNKNOW",
+    "app_id": "630596350",
+    "name": "Hello World",
     "c_id": "0"
   },
   "appConfigMaps": [
     {
       "app_id": "UNKNOW",
       "config_id": "7457d8"
+    },
+    {
+      "app_id": "630596350",
+      "config_id": "10a9f5"
     }
   ],
   "configs": [
@@ -17,6 +21,22 @@
       "config_name": "Default",
       "config_remarks": "",
       "services": []
+    },
+    {
+      "app_id": "630596350",
+      "config_id": "10a9f5",
+      "config_name": "Default",
+      "config_remarks": "",
+      "services": [
+        {
+          "service_id": "235",
+          "enable": true,
+          "param": {
+            "app_id": "630596350",
+            "store_id": "H5"
+          }
+        }
+      ]
     }
   ]
 }

@@ -1,3 +1,7 @@
 {
-  "__version__": "1.2.8"
+  "__version__": "1.2.8",
+  "splash-setting": {
+    "url": "D:\\Projects\\Cocos\\game-demo\\logo.png",
+    "displayWatermark": false
+  }
 }

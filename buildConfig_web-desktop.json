@@ -1,0 +1,53 @@
+{
+  "name": "Demo01",
+  "platform": "web-desktop",
+  "buildPath": "project://build",
+  "debug": false,
+  "md5Cache": true,
+  "sourceMaps": false,
+  "replaceSplashScreen": true,
+  "mainBundleCompressionType": "merge_dep",
+  "mainBundleIsRemote": false,
+  "mergeStartScene": false,
+  "experimentalEraseModules": false,
+  "compressTexture": true,
+  "packAutoAtlas": true,
+  "startScene": "7c3e7fab-7b1e-4865-ba84-3cf81b48b9fb",
+  "scenes": [
+    {
+      "url": "db://assets/scene/main.scene",
+      "uuid": "7c3e7fab-7b1e-4865-ba84-3cf81b48b9fb",
+      "inBundle": false
+    }
+  ],
+  "outputName": "web-desktop",
+  "packages": {
+    "web-desktop": {
+      "resolution": {
+        "designWidth": 1024,
+        "designHeight": 512
+      },
+      "polyfills": {
+        "asyncFunctions": true
+      },
+      "__version__": "1.0.0"
+    },
+    "cocos-service": {
+      "configID": "10a9f5",
+      "services": [
+        {
+          "service_id": "235",
+          "service_component_name": "service-analytics",
+          "builder": "C:\\Users\\nguyen.ba.dai\\.CocosCreator\\.service\\analytics\\builder\\builder.js",
+          "enable": true,
+          "params": {
+            "app_id": "630596350",
+            "store_id": "H5"
+          }
+        }
+      ],
+      "__version__": "3.0.1"
+    }
+  },
+  "__version__": "1.2.8"
+}

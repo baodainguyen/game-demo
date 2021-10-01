@@ -1,5 +1,4 @@
-
-import { _decorator, Component, Node, Vec3, clamp } from 'cc';
+import { _decorator, Component, Node, Vec3 } from 'cc';
 import { Global, EIgnoreLayer, Utils } from './global';
 import { MoveControl } from './move-control';
 const { ccclass, property } = _decorator;
@@ -25,14 +24,14 @@ export class ActionControl extends Component {
         this.moveControl = this.getComponent(MoveControl) as MoveControl;
         this.resetScale();
     }
-    resetScale(){
+    private resetScale(){
         this.line.setScale(Vec3.ZERO);
     }
     update (dt: number) {
         Global.inputControl.IsFire && this.onFire();
     }
     
-    onFire() {
+    private onFire() {
         let from = this.line.getWorldPosition();
         let to = this.target.getWorldPosition();
 
