@@ -5,7 +5,7 @@ const { ccclass } = _decorator;
 
 @ccclass('InteractObject')
 export class InteractObject extends Component {
-    private healthBar?:HealthBar;
+    private healthBar:HealthBar = null!;
     private health:number = 100;
     
     private isDead = false;
@@ -32,8 +32,7 @@ export class InteractObject extends Component {
 
     }
     destroyHealthBar() {
-        this.healthBar && this.healthBar.node.destroy();
-        this.healthBar = undefined;
+        this.healthBar.node && this.healthBar.node.destroy();
     }
     private scaleHealthBar() {
         let p = this.health / 100;
@@ -49,7 +48,7 @@ export class InteractObject extends Component {
        this.scaleHealthBar();
     }
     public get HasBar():boolean {
-        return !!this.healthBar;
+        return this.healthBar && this.healthBar.node && !!this.healthBar.node.position;
     }
 
     private timeCount:number = 0;

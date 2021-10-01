@@ -61,9 +61,6 @@ export class MoveControl extends Component {
         Vec3.multiplyScalar(offset, offset, this.speed);
 
         this.rigid.setLinearVelocity(offset);
-
-        //Vec3.add(offset, offset, pos);    // harcode movement
-       // this.node.setWorldPosition(offset);
         
     }
     getLimitPos(pos:Vec3){

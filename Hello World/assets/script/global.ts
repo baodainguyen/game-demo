@@ -41,15 +41,17 @@ export class Utils {
         let dir:Vec3 = new Vec3();
         Vec3.subtract(dir, to, from);
         const outRay = Ray.create(from.x, from.y, from.z, dir.x, dir.y, dir.z);
-        return new Promise((resolve, reject) => {
-
+        return new Promise((resolve) => {
             if (PhysicsSystem.instance.raycastClosest(outRay, mask, Global.MaxDistance)) {
                 const r = PhysicsSystem.instance.raycastClosestResult;
                 resolve(r.collider.node);
-               // console.log(r.collider.node.name, r.collider.node.getPosition());
+                console.log(r.collider.node.name/*, r.collider.node.getPosition()*/);
             }
         }); // promise
     };
+    static lookAt(node:Node, posTarget:Vec3) {        
+        node.lookAt(posTarget.multiplyScalar(-1));
+    }
 // https://www.gamedev.net/forums/topic/56471-extracting-direction-vectors-from-quaternion/
     static getVec3Forward(node:Node) {
         let q = node.getWorldRotation();

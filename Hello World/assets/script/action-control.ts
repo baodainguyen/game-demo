@@ -1,13 +1,14 @@
-import { _decorator, Component, Node, Vec3 } from 'cc';
-import { Global, EIgnoreLayer, Utils } from './global';
+import { _decorator, Node, Vec3 } from 'cc';
+import { Global } from './global';
+import { NpcControl } from './npc-control';
 import { MoveControl } from './move-control';
 const { ccclass, property } = _decorator;
  
 @ccclass('ActionControl')
-export class ActionControl extends Component {
+export class ActionControl extends NpcControl {
     
-    @property(Node)
-    line:Node = null!;
+    // @property(Node)
+    // line:Node = null!;
 
     @property(Node)
     target:Node = null!;
@@ -24,34 +25,36 @@ export class ActionControl extends Component {
         this.moveControl = this.getComponent(MoveControl) as MoveControl;
         this.resetScale();
     }
-    private resetScale(){
-        this.line.setScale(Vec3.ZERO);
-    }
     update (dt: number) {
         Global.inputControl.IsFire && this.onFire();
     }
     
     private onFire() {
-        let from = this.line.getWorldPosition();
-        let to = this.target.getWorldPosition();
-
-        Utils.rayClosest(from, to, EIgnoreLayer.Ground).then((node:any) => {
-            let ds = node.getWorldPosition();
-            //console.log(node.name, ds, node.layer);
-            let dst = Global.MaxDistance;
-            if(node.name == 'ground') {
-                this.line.setScale(new Vec3(1, 1, dst)); 
-            } else {
-                dst = Vec3.distance(ds, this.node.worldPosition);
-                this.line.setScale(new Vec3(1, 1, dst - 1.177));
-
-                Global.prefab.showHealthUI(node);
-
-            }
-            
-            this.scheduleOnce(this.resetScale, 0.045);
-        });
+        this.fireTo(this.target);
     }
+    // public fireTo(target:Node) {
+    //     let from = this.line.getWorldPosition();
+    //     let to = target.getWorldPosition();
+        
+    //     Utils.rayClosest(from, to, EIgnoreLayer.Ground).then((node:any) => {
+    //         let ds = node.getWorldPosition();
+    //         //console.log(node.name, ds, node.layer);
+    //         let dst = Global.MaxDistance;
+    //         if(node.name == 'ground') {
+    //             this.line.setScale(new Vec3(1, 1, dst)); 
+    //         } else {
+    //             dst = Vec3.distance(ds, this.node.worldPosition);
+    //             this.line.setScale(new Vec3(1, 1, dst - 1.177));
+
+    //             Global.prefab.showHealthUI(node);
+
+    //         }
+    //         let self = this;
+    //         this.scheduleOnce(function(){
+    //             self.resetScale();
+    //         }, 0.045);
+    //     });
+    // }
     fire(event:Event, customEventData:any){     // button Fire on CanvasUI
         this.onFire();
     }
