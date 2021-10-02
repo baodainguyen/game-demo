@@ -7,8 +7,7 @@ const { ccclass, property } = _decorator;
 @ccclass('ActionControl')
 export class ActionControl extends NpcControl {
     
-    // @property(Node)
-    // line:Node = null!;
+    // @property(Node) line:Node = null!;
 
     @property(Node)
     target:Node = null!;
@@ -32,29 +31,8 @@ export class ActionControl extends NpcControl {
     private onFire() {
         this.fireTo(this.target);
     }
-    // public fireTo(target:Node) {
-    //     let from = this.line.getWorldPosition();
-    //     let to = target.getWorldPosition();
-        
-    //     Utils.rayClosest(from, to, EIgnoreLayer.Ground).then((node:any) => {
-    //         let ds = node.getWorldPosition();
-    //         //console.log(node.name, ds, node.layer);
-    //         let dst = Global.MaxDistance;
-    //         if(node.name == 'ground') {
-    //             this.line.setScale(new Vec3(1, 1, dst)); 
-    //         } else {
-    //             dst = Vec3.distance(ds, this.node.worldPosition);
-    //             this.line.setScale(new Vec3(1, 1, dst - 1.177));
+    // public fireTo(target:Node) { }
 
-    //             Global.prefab.showHealthUI(node);
-
-    //         }
-    //         let self = this;
-    //         this.scheduleOnce(function(){
-    //             self.resetScale();
-    //         }, 0.045);
-    //     });
-    // }
     fire(event:Event, customEventData:any){     // button Fire on CanvasUI
         this.onFire();
     }

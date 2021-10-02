@@ -46,15 +46,15 @@ export class MoveControl extends Component {
         pos = this.getLimitPos(pos);
         
         if(y) {
-            this.posTarget = new Vec3 (x,y,-z);
+            this.posTarget = new Vec3 (x, y, z);
         } else {
-            this.posTarget = new Vec3 (x, pos.y, -z);
+            this.posTarget = new Vec3 (x, pos.y, z);
         }
 
         let offset = new Vec3();
         Vec3.subtract(offset, this.posTarget, this.node.worldPosition);
 
-        this.node.lookAt(this.posTarget.multiplyScalar(-1));
+        this.node.lookAt(this.posTarget);
 
         offset.normalize();
 

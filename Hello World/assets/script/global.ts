@@ -6,6 +6,9 @@ export class Global {
     static inputControl: InputControl;
     static prefab: PrefabControl
     static MaxDistance = 69;
+    static isEnvironment(name:string) {
+        return name.includes('ground') || name.includes('stone');
+    }
 }
 
 export enum EIgnoreLayer { Ground = 0, Player = 1, Enemy = 2  }
@@ -33,6 +36,12 @@ export class Utils {
             }
         }); // promise
 
+    };
+    static rayClosestDir(from:Vec3, dir:Vec3, range:number){
+        let to = dir;
+        Vec3.subtract(to, dir, from);
+        Vec3.multiplyScalar(to, to, range);
+        return Utils.rayClosest(from, to, EIgnoreLayer.Ground);
     };
     static rayClosest(from:Vec3, to:Vec3, ignLayer:number) { //DrawNode
         let mask = 0xffffffff;

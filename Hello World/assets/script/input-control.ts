@@ -57,7 +57,7 @@ export class InputControl extends Component {
     onTouchMove(touch: Touch, event: EventTouch){
         let touchLoc = touch.getLocation();
         let delX = touchLoc.x - this.touchPosX;
-        let delZ = touchLoc.y - this.touchPosZ;
+        let delZ = -touchLoc.y + this.touchPosZ;
 
         this.movePosX = delX > 201 ? 201 : (delX < -201 ? -201 : delX);
         this.movePosZ = delZ > 201 ? 201 : (delZ < -201 ? -201 : delZ);

@@ -16,7 +16,7 @@ export class NpcControl extends Component {
             let ds = node.getWorldPosition();
             //console.log(node.name, ds, node.layer);
             let dst = Global.MaxDistance;
-            if(node.name == 'ground') {
+            if (Global.isEnvironment(node.name)) {
                 this.line.setScale(new Vec3(1, 1, dst)); 
             } else {
                 dst = Vec3.distance(ds, this.node.worldPosition);
