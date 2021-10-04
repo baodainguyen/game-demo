@@ -1,17 +1,15 @@
-
-import { _decorator, Component, Node, systemEvent, SystemEvent, KeyCode, EventKeyboard } from 'cc';
+import { _decorator, Component, Node, Vec3 } from 'cc';
 import { Global, Utils } from './global';
 const { ccclass, property } = _decorator;
 
 @ccclass('Rada')
 export class Rada extends Component {
-    @property(Node)
-    debug:Node = null!;
-
-    private target:Node = null!;
+   @property(Node)
+   nodeDirection:Node = null!;
+    private target?:Node = null!;
     private rad = 0;
     
-    @property({ slide: true, range: [10, 360, 10] })
+    @property({ slide: true, range: [10, 180, 10] })
     private wideAngle = 60;
     
     @property({ slide: true, range: [10, 69, 10] })
@@ -27,10 +25,10 @@ export class Rada extends Component {
     rotateInRange() {
         this.rad += Math.PI / 24;
         this.node.setRotationFromEuler(0, this.Angle, 0);
-        //console.log(this.VecForward, this.debug.position, this.debug.worldPosition);
+        //console.log(this.VecForward);
         Utils.rayClosestDir(this.node.getWorldPosition(), this.VecForward, this.range).then(
             (node:any) => {
-                if(!Global.isEnvironment(node.name) && !(this.target && this.target.position)) {
+                if(!Global.isEnvironment(node.name)) {
                     console.log('visible:' + node.name);
                     this.target = node;
                 }
@@ -38,7 +36,9 @@ export class Rada extends Component {
         )
     };
     get TargetPos() {
-        if(this.Target !== undefined) return this.Target.getPosition();
+        if(this.Target !== undefined) 
+            return new Vec3(this.Target.position.x, this.node.position.y, this.Target.position.z);
+
         return this.node.getPosition();
     }
     get Target() {
@@ -49,7 +49,7 @@ export class Rada extends Component {
         return this.wideAngle * Math.sin(this.rad);
     }
     get VecForward() {
-        return Utils.getVec3Forward(this.node);
+        return new Vec3(this.nodeDirection.worldPosition.x, this.node.worldPosition.y, this.nodeDirection.worldPosition.z);
     }
 }
 

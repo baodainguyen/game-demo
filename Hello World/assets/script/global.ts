@@ -40,6 +40,7 @@ export class Utils {
     static rayClosestDir(from:Vec3, dir:Vec3, range:number){
         let to = dir;
         Vec3.subtract(to, dir, from);
+        Vec3.normalize(to, to);
         Vec3.multiplyScalar(to, to, range);
         return Utils.rayClosest(from, to, EIgnoreLayer.Ground);
     };

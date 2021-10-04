@@ -1,4 +1,3 @@
-
 import { _decorator, Component, Node } from 'cc';
 import { HealthBar } from './health-bar';
 const { ccclass } = _decorator;
