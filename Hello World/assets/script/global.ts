@@ -55,7 +55,7 @@ export class Utils {
             if (PhysicsSystem.instance.raycastClosest(outRay, mask, Global.MaxDistance)) {
                 const r = PhysicsSystem.instance.raycastClosestResult;
                 resolve(r.collider.node);
-                console.log(r.collider.node.name/*, r.collider.node.getPosition()*/);
+               // console.log(r.collider.node.name/*, r.collider.node.getPosition()*/);
             }
         }); // promise
     };

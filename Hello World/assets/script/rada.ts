@@ -6,7 +6,7 @@ const { ccclass, property } = _decorator;
 export class Rada extends Component {
    @property(Node)
    nodeDirection:Node = null!;
-    private target?:Node = null!;
+    private target?:Node;
     private rad = 0;
     
     @property({ slide: true, range: [10, 180, 10] })
