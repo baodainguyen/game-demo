@@ -1,10 +1,11 @@
 import { _decorator, Component, Node } from 'cc';
 import { HealthBar } from './health-bar';
-const { ccclass } = _decorator;
+const { ccclass, property } = _decorator;
 
 @ccclass('InteractObject')
 export class InteractObject extends Component {
     private healthBar:HealthBar = null!;
+    @property({ slide: true, range: [10, 100, 5] })
     private health:number = 100;
     
     private isDead = false;

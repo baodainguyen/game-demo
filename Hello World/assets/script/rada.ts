@@ -13,21 +13,19 @@ export class Rada extends BaseRada {
             this.node.lookAt(this.TargetPos);
         }
     }
-    rotateInRange() {
-        this.rad += Math.PI / 24;
-        this.node.setRotationFromEuler(0, this.Angle, 0);
+    private rotateInRange() {
+        this.roteUI();
         
         Utils.rayClosestDir(this.node.getWorldPosition(), this.VecForward, this.range).then(
             (node:any) => {
-                if(!Global.isEnvironment(node.name)) {
-                    //console.log('visible:' + node.name);
+               // console.log('visible:' + node.name, node.layer);
+                if(!Global.isEnvironment(node.name) && Global.isVisible(node.layer)) {
                     Global.Target = node;
                 }
             }
         )
     };
-    private get existTarget() {        
-        //console.log(Global.Target)
+    private get existTarget() {
         return Global.Target && Global.Target.position;
     }
     private get TargetPos() {

@@ -1,20 +1,20 @@
-
-import { _decorator, Node, Vec3, RigidBodyComponent } from 'cc';
+import { _decorator, Vec3 } from 'cc';
 import { BaseControl } from './base-control';
 import { NpcRada } from './npc-rada';
-const { ccclass, property } = _decorator;
+const { ccclass } = _decorator;
  
 @ccclass('NpcControl')
 export default class NpcControl extends BaseControl {
-    @property(NpcRada)
-    npcRada:NpcRada = null!;
+    
+    private radaScript:NpcRada = null!;
 
     start() {
         this.line.setScale(Vec3.ZERO);
+        this.radaScript = this.getComponentInChildren(NpcRada) as NpcRada;
     }
 
     onEnable(){
-        this.schedule(this.fire, 0.39);
+        this.schedule(this.fire, 1.2);
     }
 
     onDisable() {
@@ -22,14 +22,13 @@ export default class NpcControl extends BaseControl {
     }
 
     private fire() {
-        if(this.npcRada && this.npcRada.Target) {
-            //this.node.lookAt(this.npcRada.TargetPos);
-            this.fireTo(this.npcRada.Target);
+        if(this.radaScript && this.radaScript.HasTarget) {
+            this.fireTo(this.radaScript.target);
         }
     }
     update() {
-        if(this.npcRada && this.npcRada.Target) {
-            this.node.lookAt(this.npcRada.TargetPos, Vec3.UP);
+        if(this.radaScript && this.radaScript.HasTarget) {
+            this.node.lookAt(this.radaScript.TargetPos);
         }
     }
 }

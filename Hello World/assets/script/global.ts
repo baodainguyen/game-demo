@@ -10,13 +10,17 @@ export class Global {
    
     static isPlayer(layer:number) {
         return layer == EIgnoreLayer.Player;
-    }   
+    }
+    static isVisible(layer:number) {
+        return layer == EIgnoreLayer.Enemy;
+    }
     static isEnvironment(name:string) {
         return name.includes('ground') || name.includes('stone');
     }
+    
 }
 
-export enum EIgnoreLayer { Ground = 1, Player = 2, Enemy = 3  }
+export enum EIgnoreLayer { Ground = 1 << 0, Player = 1 << 1, Enemy = 1 << 2  }
 
 const {Ray} = geometry;
 
@@ -24,30 +28,25 @@ export class Utils {
     // ray cast all
     static rayTo (from:Vec3, to:Vec3, ignLayer:number) {
         let mask = 0xffffffff;
-        mask &= ~ignLayer;
-        
+        mask &= ~ignLayer;        
         let dir:Vec3 = new Vec3();
         Vec3.subtract(dir, to, from);
         const outRay = Ray.create(from.x, from.y, from.z, dir.x, dir.y, dir.z);
         return new Promise((resolve) => {
-
             if (PhysicsSystem.instance.raycast(outRay, mask, Global.MaxDistance)) {
                 const r = PhysicsSystem.instance.raycastResults;
                 for (let i = 0; i < r.length; i++) {
                     const item = r[i];
-                    resolve(item.collider.node);
-                    
+                    resolve(item.collider.node);                    
                 }
             }
         }); // promise
-
     };
-    static rayClosestDir(from:Vec3, dir:Vec3, range:number){
-        let to = dir;
-        Vec3.subtract(to, dir, from);
-        
+    static rayClosestDir(from:Vec3, dir:Vec3, range:number){        
         let mask = 0xffffffff;
-        const outRay = Ray.create(from.x, from.y, from.z, to.x, to.y, to.z);
+        mask &= ~EIgnoreLayer.Ground;
+
+        const outRay = Ray.create(from.x, from.y, from.z, dir.x, dir.y, dir.z);
         return new Promise((resolve) => {
             if (PhysicsSystem.instance.raycastClosest(outRay, mask, range)) {
                 const r = PhysicsSystem.instance.raycastClosestResult;
@@ -79,7 +78,6 @@ export class Utils {
         let x = 2 * (q.x * q.z + q.y * q.w);
         let y = 2 * (q.y * q.z - q.x * q.w);
         let z = 1 - 2 * (q.x * q.x + q.y * q.y);
-
         let a = node.getWorldPosition();
         Vec3.add(a, a, new Vec3(x, y, z));
         return a;

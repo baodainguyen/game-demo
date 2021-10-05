@@ -31,6 +31,5 @@ export class ActionControl extends BaseControl {
     private onFire() {
         this.fireTo(this.target);
     }
-    // public fireTo(target:Node) { }
-
+    
 }

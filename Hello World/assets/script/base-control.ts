@@ -1,4 +1,3 @@
-
 import { _decorator, Component, Node, Vec3 } from 'cc';
 import { EIgnoreLayer, Global, Utils } from './global';
 const { ccclass, property } = _decorator;
