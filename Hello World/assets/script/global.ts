@@ -8,12 +8,15 @@ export class Global {
     static MaxDistance = 69;
     static Target:Node = null!;
    
+    static isPlayer(layer:number) {
+        return layer == EIgnoreLayer.Player;
+    }   
     static isEnvironment(name:string) {
         return name.includes('ground') || name.includes('stone');
     }
 }
 
-export enum EIgnoreLayer { Ground = 0, Player = 1, Enemy = 2  }
+export enum EIgnoreLayer { Ground = 1, Player = 2, Enemy = 3  }
 
 const {Ray} = geometry;
 
@@ -42,9 +45,15 @@ export class Utils {
     static rayClosestDir(from:Vec3, dir:Vec3, range:number){
         let to = dir;
         Vec3.subtract(to, dir, from);
-        Vec3.normalize(to, to);
-        Vec3.multiplyScalar(to, to, range);
-        return Utils.rayClosest(from, to, EIgnoreLayer.Ground);
+        
+        let mask = 0xffffffff;
+        const outRay = Ray.create(from.x, from.y, from.z, to.x, to.y, to.z);
+        return new Promise((resolve) => {
+            if (PhysicsSystem.instance.raycastClosest(outRay, mask, range)) {
+                const r = PhysicsSystem.instance.raycastClosestResult;
+                resolve(r.collider.node);
+            }
+        }); // promise
     };
     static rayClosest(from:Vec3, to:Vec3, ignLayer:number) { //DrawNode
         let mask = 0xffffffff;

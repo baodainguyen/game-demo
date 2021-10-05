@@ -1,11 +1,11 @@
 import { _decorator, Node, Vec3 } from 'cc';
 import { Global } from './global';
-import { NpcControl } from './npc-control';
 import { MoveControl } from './move-control';
+import { BaseControl } from './base-control';
 const { ccclass, property } = _decorator;
  
 @ccclass('ActionControl')
-export class ActionControl extends NpcControl {
+export class ActionControl extends BaseControl {
     
     // @property(Node) line:Node = null!;
 

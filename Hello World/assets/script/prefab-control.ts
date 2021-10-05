@@ -6,6 +6,8 @@ const { ccclass, property } = _decorator;
 
 @ccclass('PrefabControl')
 export class PrefabControl extends Component {
+    @property(Node)
+    public mainCamera:Node = null!;
     
     @property(Prefab)
     healthBar = null!;

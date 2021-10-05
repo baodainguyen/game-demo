@@ -21,21 +21,21 @@ export class NpcRada extends BaseRada {
         
         Utils.rayClosestDir(this.node.getWorldPosition(), this.VecForward, this.range).then(
             (node:any) => {
-                if(!Global.isEnvironment(node.name)) {
-                    //console.log('visible:' + node.name);
+                //console.log('visible:' + node.layer, node.name);
+                if(!Global.isEnvironment(node.name) && Global.isPlayer(node.layer)) {
                     this.target = node;
                 }
             }
         )
     };
 
-    protected get TargetPos() {
+    public get TargetPos() {
         if(this.Target !== undefined) 
-            return new Vec3(this.Target.position.x, this.node.position.y, this.Target.position.z);
+            return new Vec3(this.Target.worldPosition.x, this.node.worldPosition.y, this.Target.worldPosition.z);
 
         return this.node.getPosition();
     }
-    protected get Target() {
+    public get Target() {
         if(this.target && this.target.position) return this.target;
         return undefined;
     }

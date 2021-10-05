@@ -1,6 +1,6 @@
 
 import { _decorator, Component, Node } from 'cc';
-import { NpcControl } from './npc-control';
+import NpcControl from './npc-control';
 import { Utils } from './global';
 const { ccclass, property } = _decorator;
  

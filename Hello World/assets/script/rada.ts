@@ -20,7 +20,7 @@ export class Rada extends BaseRada {
         Utils.rayClosestDir(this.node.getWorldPosition(), this.VecForward, this.range).then(
             (node:any) => {
                 if(!Global.isEnvironment(node.name)) {
-                    console.log('visible:' + node.name);
+                    //console.log('visible:' + node.name);
                     Global.Target = node;
                 }
             }
