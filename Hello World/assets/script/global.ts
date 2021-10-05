@@ -1,4 +1,4 @@
-import { _decorator, PhysicsSystem, geometry, Vec3, Node, Graphics, Color } from 'cc';
+import { _decorator, PhysicsSystem, geometry, Vec3, Node } from 'cc';
 import { InputControl } from './input-control';
 import { PrefabControl } from './prefab-control';
 
@@ -6,6 +6,8 @@ export class Global {
     static inputControl: InputControl;
     static prefab: PrefabControl
     static MaxDistance = 69;
+    static Target:Node = null!;
+   
     static isEnvironment(name:string) {
         return name.includes('ground') || name.includes('stone');
     }

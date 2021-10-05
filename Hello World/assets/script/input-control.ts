@@ -36,6 +36,9 @@ export class InputControl extends Component {
                 break;
         }
     }
+    public load(event:Event, customEventData:any){     // button Fire on CanvasUI
+        Global.Target = null!;
+    }
 
     start () {
         this.canvas.on(Node.EventType.TOUCH_START, this.onTouchStart, this);

@@ -33,13 +33,4 @@ export class ActionControl extends NpcControl {
     }
     // public fireTo(target:Node) { }
 
-    fire(event:Event, customEventData:any){     // button Fire on CanvasUI
-        this.onFire();
-    }
-    
-    load(event:Event, customEventData:any){
-        console.log("Loading...");
-        console.log(event);
-        console.log(customEventData);
-    }
 }

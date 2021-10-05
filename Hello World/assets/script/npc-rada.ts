@@ -1,13 +1,15 @@
-import { _decorator, Vec3 } from 'cc';
+
+import { _decorator, Node, Vec3 } from 'cc';
 import { BaseRada } from './base-rada';
 import { Global, Utils } from './global';
 const { ccclass, property } = _decorator;
-
-@ccclass('Rada')
-export class Rada extends BaseRada {
-
+ 
+@ccclass('NpcRada')
+export class NpcRada extends BaseRada {
+    private target:Node = null!;
+    
     update(dt:number){
-        if(!this.existTarget) {
+        if(!this.Target) {
             this.rotateInRange();
         } else {
             this.node.lookAt(this.TargetPos);
@@ -20,20 +22,22 @@ export class Rada extends BaseRada {
         Utils.rayClosestDir(this.node.getWorldPosition(), this.VecForward, this.range).then(
             (node:any) => {
                 if(!Global.isEnvironment(node.name)) {
-                    console.log('visible:' + node.name);
-                    Global.Target = node;
+                    //console.log('visible:' + node.name);
+                    this.target = node;
                 }
             }
         )
     };
-    private get existTarget() {        
-        //console.log(Global.Target)
-        return Global.Target && Global.Target.position;
-    }
-    private get TargetPos() {
-        if(this.existTarget)
-            return new Vec3(Global.Target.position.x, this.node.position.y, Global.Target.position.z);
-        return Vec3.ZERO;
-    }
-}
 
+    protected get TargetPos() {
+        if(this.Target !== undefined) 
+            return new Vec3(this.Target.position.x, this.node.position.y, this.Target.position.z);
+
+        return this.node.getPosition();
+    }
+    protected get Target() {
+        if(this.target && this.target.position) return this.target;
+        return undefined;
+    }
+    
+}
