@@ -2,7 +2,6 @@ import { _decorator, Component, Event, BoxCollider, Vec3, RigidBody } from 'cc';
 import { Global } from './global';
 const { ccclass, property } = _decorator;
 
-
 @ccclass('MoveControl')
 export class MoveControl extends Component {
    
@@ -27,7 +26,7 @@ export class MoveControl extends Component {
         this.stopRigid();
     }
 
-    update (deltaTime: number) {
+    update (dt: number) {
         
         if(Global.inputControl.isTouch) {
             this.movingBy(Global.inputControl.MovePos.x, Global.inputControl.MovePos.z);
@@ -36,11 +35,11 @@ export class MoveControl extends Component {
         }
         
     }
-    stopRigid(){
+    private stopRigid(){
         this.rigid.setLinearVelocity(Vec3.ZERO);
         this.rigid.setAngularVelocity(Vec3.ZERO);
     }
-    movingBy(x:number, z:number, y?:number) {
+    private movingBy(x:number, z:number, y?:number) {
         let pos = this.node.getWorldPosition();
 
         pos = this.getLimitPos(pos);
@@ -57,13 +56,12 @@ export class MoveControl extends Component {
         this.node.lookAt(this.posTarget);
 
         offset.normalize();
-
         Vec3.multiplyScalar(offset, offset, this.speed);
 
         this.rigid.setLinearVelocity(offset);
         
     }
-    getLimitPos(pos:Vec3){
+    private getLimitPos(pos:Vec3){
         pos.x = pos.x < -16.2 ? -16.2 : pos.x;
         pos.x = pos.x > 22.2 ? 22.2 : pos.x;
         pos.z = pos.z < -28.8 ? -28.8 : pos.z;

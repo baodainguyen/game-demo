@@ -4,7 +4,7 @@ const { ccclass, property } = _decorator;
  
 @ccclass('InputControl')
 export class InputControl extends Component {
-    
+        
     @property(Node)
     canvas: Node = null!;
 

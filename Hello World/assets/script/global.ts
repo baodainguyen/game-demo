@@ -7,7 +7,8 @@ export class Global {
     static prefab: PrefabControl
     static MaxDistance = 69;
     static Target:Node = null!;
-   
+    static InRgSqrDist = 10 * 10;
+    static WalkSpeed = 3.6;
     static isPlayer(layer:number) {
         return layer == EIgnoreLayer.Player;
     }

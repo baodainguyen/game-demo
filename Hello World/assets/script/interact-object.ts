@@ -1,5 +1,6 @@
 import { _decorator, Component, Node } from 'cc';
 import { HealthBar } from './health-bar';
+import NpcControl from './npc-control';
 const { ccclass, property } = _decorator;
 
 @ccclass('InteractObject')
@@ -10,12 +11,12 @@ export class InteractObject extends Component {
     
     private isDead = false;
     public get IsDead(){return this.isDead;}
-    public hitShell() {
+    public hitShell(hitNode?:Node) {
         if(this.health < 0) {
             this.destroyHealthBar();
             return;
         }
-
+        this.onSetTarget(hitNode);
         let n = Math.random();
         n += 1;     // hardcode
         this.health -= n;
@@ -26,7 +27,11 @@ export class InteractObject extends Component {
         }
         this.scaleHealthBar();
     }
-
+    private onSetTarget(hitNode?:Node) {
+        if(!hitNode) return;
+        let npcControl = this.getComponent(NpcControl) as NpcControl;
+        npcControl && npcControl.setTarget(hitNode);
+    }
     private deadAnimation() {
         // do animation in 2.1 seconds
 

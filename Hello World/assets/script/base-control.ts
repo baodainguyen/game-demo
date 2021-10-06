@@ -25,12 +25,10 @@ export class BaseControl extends Component {
                 Global.prefab.showHealthUI(node);
 
             }
-            let self = this;
-            this.scheduleOnce(function(){
-                self.resetScale();
-            }, 0.045);
+            this.scheduleOnce(this.resetScale, 0.045);
         });
     }
+
     protected resetScale(){
         this.line.setScale(Vec3.ZERO);
     }

@@ -1,5 +1,5 @@
 import { _decorator, Node, Vec3 } from 'cc';
-import { Global } from './global';
+import { Global, Utils } from './global';
 import { MoveControl } from './move-control';
 import { BaseControl } from './base-control';
 const { ccclass, property } = _decorator;
@@ -25,11 +25,27 @@ export class ActionControl extends BaseControl {
         this.resetScale();
     }
     update (dt: number) {
-        Global.inputControl.IsFire && this.onFire();
+        Global.inputControl.IsFire && this.fireOnDirect();
     }
     
-    private onFire() {
-        this.fireTo(this.target);
+    private fireOnDirect() {
+        let from = this.line.getWorldPosition();
+        let dir = Utils.getVec3Forward(this.line);
+        Vec3.subtract(dir, dir, from);
+        Utils.rayClosestDir(from, dir, Global.MaxDistance).then(
+            (node:any) => {
+                let dst = Global.MaxDistance;
+                if(Global.isEnvironment(node.name)) {
+                    this.line.setScale(new Vec3(1, 1, dst))
+                } 
+                else {
+                    dst = Vec3.distance(node.worldPosition, this.line.worldPosition);
+                    this.line.setScale(new Vec3(1, 1, dst));
+                    
+                    Global.prefab.showHealthUI(node, this.node);
+                }
+                
+                this.scheduleOnce(this.resetScale, 0.045);
+        });
     }
-    
 }

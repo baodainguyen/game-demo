@@ -6,14 +6,20 @@ const { ccclass } = _decorator;
 @ccclass('NpcRada')
 export class NpcRada extends BaseRada {
     public target:Node = null!;
-    
+       
     update(dt:number){
-        if(!this.HasTarget) {
-            this.rotateInRange();
+        if(this.HasTarget) {
+            this.node.lookAt(this.TargetPosRada);
+            this.checkInRange();
         } else {
-            this.node.lookAt(this.TargetPos);
+            this.rotateInRange();
         }
-        //console.log(this.TargetPos);
+    }
+    private checkInRange(){
+        let dst = Vec3.squaredDistance(this.TargetPos, this.node.worldPosition);
+        if(dst > this.range * this.range) {
+            this.target = null!;
+        }
     }
     private rotateInRange() {
         this.roteUI();
@@ -27,8 +33,7 @@ export class NpcRada extends BaseRada {
             }
         )
     };
-
-    public get TargetPos() {
+    public get TargetPosRada() {
         if(this.target && this.target.worldPosition)
             return new Vec3(this.target.worldPosition.x, 
                             this.node.worldPosition.y, 
@@ -36,7 +41,13 @@ export class NpcRada extends BaseRada {
 
         return Vec3.ZERO;
     }
+    public get TargetPos() {
+        if(this.target && this.target.worldPosition)
+            return this.target.worldPosition;
+
+        return this.node.worldPosition;
+    }
     public get HasTarget() {
-        return this.target && this.target.position && this.target.worldPosition;
+        return this.target && this.target.position && !!this.target.worldPosition;
     }
 }
