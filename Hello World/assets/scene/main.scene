@@ -543,10 +543,7 @@
         "__expectedType__": "cc.AnimationClip"
       }
     ],
-    "_defaultClip": {
-      "__uuid__": "cad0f75f-6415-416e-b2f9-a85900999d18@cf5ee",
-      "__expectedType__": "cc.AnimationClip"
-    },
+    "_defaultClip": null,
     "_useBakedAnimation": true,
     "_sockets": [],
     "_id": "176PztIG1Nh4ZQfgk3R371"
@@ -1083,9 +1080,6 @@
     },
     "_enabled": true,
     "__prefab": null,
-    "anim": {
-      "__id__": 29
-    },
     "speed": 6,
     "rotateSpeed": 9,
     "_id": "ed46rVNhdGv6jYXTgDJHet"
@@ -5076,10 +5070,7 @@
         "__expectedType__": "cc.AnimationClip"
       }
     ],
-    "_defaultClip": {
-      "__uuid__": "cad0f75f-6415-416e-b2f9-a85900999d18@cf5ee",
-      "__expectedType__": "cc.AnimationClip"
-    },
+    "_defaultClip": null,
     "_useBakedAnimation": true,
     "_sockets": [],
     "_id": "89YzAaFwNGj7Oj7xtDzhCw"
@@ -5826,10 +5817,7 @@
         "__expectedType__": "cc.AnimationClip"
       }
     ],
-    "_defaultClip": {
-      "__uuid__": "4ffdbae3-c762-43db-a81c-21fe42a9ea1b@1f586",
-      "__expectedType__": "cc.AnimationClip"
-    },
+    "_defaultClip": null,
     "_useBakedAnimation": true,
     "_sockets": [],
     "_id": "b5S/Vv/DJH9qoS01RnbUVu"
@@ -6366,9 +6354,6 @@
     },
     "_enabled": true,
     "__prefab": null,
-    "anim": {
-      "__id__": 307
-    },
     "speed": 6,
     "rotateSpeed": 9,
     "_id": "7cc2oO0mFOAY2DyPojyRTB"
