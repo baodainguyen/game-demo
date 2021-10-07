@@ -1,4 +1,4 @@
-import { _decorator, PhysicsSystem, geometry, Vec3, Node } from 'cc';
+import { _decorator, PhysicsSystem, geometry, Vec3, Node,Animation } from 'cc';
 import { InputControl } from './input-control';
 import { PrefabControl } from './prefab-control';
 
@@ -83,4 +83,20 @@ export class Utils {
         Vec3.add(a, a, new Vec3(x, y, z));
         return a;
     };
+}
+export class DnbAnim {
+    private anim:Animation = null!;
+    public setAnim(a:Animation){this.anim = a;}
+    public setIdle() { 
+        if(this.anim.defaultClip?.name != 'idle') {
+            this.anim.play('idle'); this.anim.defaultClip = this.anim.clips[0];
+        } }
+    public setRun() {
+        if(this.anim.defaultClip?.name != 'run') {
+            this.anim.play('run'); this.anim.defaultClip = this.anim.clips[1];
+        } }
+    public setFire() {
+        if(this.anim.defaultClip?.name != 'shoot') {
+            this.anim.play('shoot'); this.anim.defaultClip = this.anim.clips[2];
+        }}
 }

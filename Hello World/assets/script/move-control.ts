@@ -1,10 +1,11 @@
-import { _decorator, Component, Event, BoxCollider, Vec3, RigidBody } from 'cc';
-import { Global } from './global';
+import { _decorator, Component, Event, BoxCollider, Vec3, RigidBody,Animation } from 'cc';
+import { DnbAnim, Global } from './global';
 const { ccclass, property } = _decorator;
 
 @ccclass('MoveControl')
 export class MoveControl extends Component {
-   
+    private anim:DnbAnim = new DnbAnim();
+       
     @property
     speed = 0;
 
@@ -16,28 +17,27 @@ export class MoveControl extends Component {
     get Target():Vec3{ return this.posTarget; }
     
     start () {
+        this.anim.setAnim(this.getComponentInChildren(Animation) as Animation);
         if(this.rigid == null) this.rigid = this.getComponent(RigidBody) as RigidBody;
         let collider = this.getComponent(BoxCollider) as BoxCollider;
         collider.on("onCollisionStay", this.onCollisionStay, this);
     }
     onCollisionStay (event:Event) {
         //console.log(event.type, event);
-        
         this.stopRigid();
     }
 
     update (dt: number) {
-        
         if(Global.inputControl.isTouch) {
             this.movingBy(Global.inputControl.MovePos.x, Global.inputControl.MovePos.z);
         } else {
             this.stopRigid();
         }
-        
     }
     private stopRigid(){
         this.rigid.setLinearVelocity(Vec3.ZERO);
         this.rigid.setAngularVelocity(Vec3.ZERO);
+        this.anim.setIdle();
     }
     private movingBy(x:number, z:number, y?:number) {
         let pos = this.node.getWorldPosition();
@@ -59,7 +59,7 @@ export class MoveControl extends Component {
         Vec3.multiplyScalar(offset, offset, this.speed);
 
         this.rigid.setLinearVelocity(offset);
-        
+        this.anim.setRun();
     }
     private getLimitPos(pos:Vec3){
         pos.x = pos.x < -16.2 ? -16.2 : pos.x;
